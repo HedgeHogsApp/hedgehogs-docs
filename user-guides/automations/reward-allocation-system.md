@@ -1,2 +1,0 @@
-# Reward Allocation System
-

@@ -1,0 +1,75 @@
+{
+  "title": "Hedgehog Protocol Documentation",
+  "description": "Next-generation DeFi automation platform - Technical documentation and integration guides",
+  "author": "Hedgehog Protocol Team",
+  "language": "en",
+  "gitbook": "3.2.3",
+  "root": ".",
+
+  "structure": {
+    "readme": "README.md",
+    "summary": "SUMMARY.md"
+  },
+
+  "plugins": [
+    "theme-default",
+    "code",
+    "copy-code-button",
+    "expandable-chapters",
+    "search-plus",
+    "-lunr",
+    "github",
+    "edit-link",
+    "sharing-plus",
+    "prism",
+    "-highlight",
+    "anchors"
+  ],
+
+  "pluginsConfig": {
+    "theme-default": {
+      "showLevel": true,
+      "styles": {
+        "website": "styles/website.css"
+      }
+    },
+    "github": {
+      "url": "https://github.com/hedgehog-protocol/hedgehogs-contracts"
+    },
+    "edit-link": {
+      "base": "https://github.com/hedgehog-protocol/hedgehogs-contracts/tree/main/gitbook",
+      "label": "Edit This Page"
+    },
+    "sharing": {
+      "facebook": false,
+      "twitter": true,
+      "linkedin": false,
+      "all": ["twitter"]
+    },
+    "prism": {
+      "css": [
+        "prism-themes/themes/prism-ghcolors.css"
+      ],
+      "lang": {
+        "solidity": "javascript"
+      }
+    }
+  },
+
+  "variables": {
+    "websiteUrl": "https://hedgehog.fi",
+    "discordUrl": "https://discord.gg/hedgehog",
+    "twitterUrl": "https://twitter.com/HedgehogDeFi",
+    "githubUrl": "https://github.com/hedgehog-protocol",
+    "version": "1.0.0"
+  },
+
+  "links": {
+    "sidebar": {
+      "Website": "https://hedgehog.fi",
+      "Discord": "https://discord.gg/hedgehog",
+      "Twitter": "https://twitter.com/HedgehogDeFi",
+      "GitHub": "https://github.com/hedgehog-protocol"
+    }
+  }
+}

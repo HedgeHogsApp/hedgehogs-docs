@@ -1,68 +1,67 @@
-# Table of contents
+# Summary
 
-* [Welcome!](README.md)
+## Introduction
 
-## Getting Started
+* [What is Hedgehog Protocol?](README.md)
 
-* [Quickstart](getting-started/quickstart.md)
-* [Core User Flow](getting-started/publish-your-docs.md)
+## Chapter 1: The Problem
 
-## Core Concepts
+* [The Problem with DeFi Today](chapter-1-the-problem/README.md)
 
-* [Liquidity Pools](core-concepts/liquidity-pools.md)
-* [Impermanent Loss](core-concepts/impermanent-loss.md)
-* [Hedging Strategies](core-concepts/hedging-strategies.md)
-* [Delta-Neutral Liquidity Provision](core-concepts/delta-neutral-liquidity-provision.md)
+## Chapter 2: How It Works
 
-## User Guides
+* [How Hedgehog Works](chapter-2-how-it-works/README.md)
+* [Creating Your Proxy](chapter-2-how-it-works/creating-a-proxy.md)
+* [Using the Dashboard](chapter-2-how-it-works/dashboard.md)
+* [Zap In/Out](chapter-2-how-it-works/zap.md)
+* [Manual Adjustments](chapter-2-how-it-works/manual-adjustment.md)
+* [Emergency Exit](chapter-2-how-it-works/emergency-exit.md)
 
-* [Creating a Proxy](user-guides/creating-a-proxy.md)
-* [Dashboard](user-guides/dashboard.md)
-* [Manual Adjustment](user-guides/manual-adjustment.md)
-* [Health Factor](user-guides/health-factor.md)
-* [ZAP](user-guides/zap.md)
-* [Automations](user-guides/automations/README.md)
-  * [Configure Automated Strategies](user-guides/automations/configure-automated-strategies.md)
-  * [Automation Strategy Types](user-guides/automations/automation-strategy-types/README.md)
-    * [Auto-Harvest](user-guides/automations/automation-strategy-types/auto-harvest.md)
-    * [Auto-Collateralize](user-guides/automations/automation-strategy-types/auto-collateralize.md)
-    * [Auto-Repay](user-guides/automations/automation-strategy-types/auto-repay.md)
-    * [Auto-Compound](user-guides/automations/automation-strategy-types/auto-compound.md)
-    * [Auto-Rebalance](user-guides/automations/automation-strategy-types/auto-rebalance.md)
-  * [Reward Allocation System](user-guides/automations/reward-allocation-system.md)
-  * [Emergency Exit ](user-guides/automations/emergency-exit.md)
+## Chapter 3: Automation
 
-## Protocol Deep Dive
+* [Automation Overview](chapter-3-automation/README.md)
+* [Health Factor Management](chapter-3-automation/health-factor.md)
+* [Configure Strategies](chapter-3-automation/configure-strategies.md)
+* [Reward System](chapter-3-automation/reward-system.md)
 
-* [Core Architecture](protocol-deep-dive/core-architecture.md)
-* [Key Components](protocol-deep-dive/key-components.md)
-* [Position Linking](protocol-deep-dive/position-linking.md)
+### Strategy Types
 
-## Smart Contracts
+* [Auto-Rebalance](chapter-3-automation/strategies/auto-rebalance.md)
+* [Auto-Compound](chapter-3-automation/strategies/auto-compound.md)
+* [Auto-Repay](chapter-3-automation/strategies/auto-repay.md)
+* [Auto-Collateralize](chapter-3-automation/strategies/auto-collateralize.md)
+* [Auto-Harvest](chapter-3-automation/strategies/auto-harvest.md)
 
-* [Core Contracts](smart-contracts/core-contracts.md)
-* [Connector Contracts](smart-contracts/connector-contracts.md)
-* [Directory Contracts](smart-contracts/directory-contracts.md)
-* [Strategy Contracts](smart-contracts/strategy-contracts.md)
-* [Data Structures](smart-contracts/data-structures.md)
-* [Audits](smart-contracts/audits.md)
+## Chapter 4: Core Concepts
 
-## FAQ
+* [DeFi Fundamentals](chapter-4-core-concepts/README.md)
+* [Liquidity Pools](chapter-4-core-concepts/liquidity-pools.md)
+* [Impermanent Loss](chapter-4-core-concepts/impermanent-loss.md)
+* [Hedging Strategies](chapter-4-core-concepts/hedging-strategies.md)
+* [Delta-Neutral Positions](chapter-4-core-concepts/delta-neutral.md)
+* [Competitive Advantage](chapter-4-core-concepts/competitive-advantage.md)
 
-* [General Questions](faq/general-questions.md)
-* [Security](faq/security.md)
-* [Fees](faq/fees.md)
+## Chapter 5: Technical Architecture
 
-## Contact Us
+* [Core Architecture](chapter-5-architecture/README.md)
+* [Key Components](chapter-5-architecture/key-components.md)
+* [Position Linking](chapter-5-architecture/position-linking.md)
+* [Integration Guide](chapter-5-architecture/integration-guide.md)
 
-* [Community Channels](contact-us/community-channels.md)
-* [Support & Partnerships](contact-us/support-and-partnerships.md)
+## Chapter 6: Smart Contracts
 
-## Basics
+* [Contract Overview](chapter-6-contracts/README.md)
+* [Core Contracts](chapter-6-contracts/core-contracts.md)
+* [Connector Contracts](chapter-6-contracts/connectors.md)
+* [Strategy Contracts](chapter-6-contracts/strategies.md)
+* [Directory System](chapter-6-contracts/directories.md)
+* [Data Structures](chapter-6-contracts/data-structures.md)
+* [Security Audits](chapter-6-contracts/audits.md)
 
-* [Editor](basics/editor.md)
-* [Markdown](basics/markdown.md)
-* [Images & media](basics/images-and-media.md)
-* [Interactive blocks](basics/interactive-blocks.md)
-* [OpenAPI](basics/openapi.md)
-* [Integrations](basics/integrations.md)
+## Appendix
+
+* [FAQ](appendix/faq.md)
+* [Fees](appendix/fees.md)
+* [Security](appendix/security.md)
+* [Community](appendix/community.md)
+* [Support](appendix/support.md)
