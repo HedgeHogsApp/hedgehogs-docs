@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- HedgeHogs favicon — the FULL mascot logo on a rounded dark-grey tile
+       (owner decision 2026-07-06; replaces the eyes+nose close-up).
+       Logo paths verbatim from public/logo.svg, scaled to fit with 8px pad. -->
+  <rect width="64" height="64" rx="14" fill="#141416"/>
+  <g transform="translate(8,8) scale(0.10363)">
+    <g transform="translate(0,52.9)">
+      <path d="M401.1,258.7L456.1,198.3L374.1,191.7L414.5,106.1L335,139.6L329.9,37.9L268.7,112.5L231.7,0.1L231.7,0L231.6,0L231.6,0.1L194.6,112.5L133.4,37.9L128.2,139.6L48.8,106.1L76.9,191.7L7.2,198.3L49.8,258.7L0,320L175.3,320L108.1,252.8L166.5,194.3L197.1,224.9L266.1,224.9L296.7,194.3L355.2,252.8L288,320L463.2,320L401.1,258.7Z" fill="#3DD8C9"/>
+      <g transform="matrix(0.707107,-0.707107,0.707107,0.707107,-133.6,199.4)">
+        <rect x="161" y="241.1" width="25.7" height="39.8" fill="#3DD8C9"/>
+      </g>
+      <g transform="matrix(0.707107,-0.707107,0.707107,0.707107,-99.8,281.1)">
+        <rect x="269.6" y="248.2" width="39.8" height="25.7" fill="#3DD8C9"/>
+      </g>
+      <path d="M231.6,309C218.2,309 207.4,319.9 207.4,333.2C207.4,346.5 218.3,357.4 231.6,357.4C244.9,357.4 255.8,346.5 255.8,333.2C255.8,319.9 244.9,309 231.6,309Z" fill="#3DD8C9"/>
+    </g>
+  </g>
+</svg>

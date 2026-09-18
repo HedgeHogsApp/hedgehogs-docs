@@ -1,0 +1,28 @@
+---
+title: Architecture
+description: The non-custodial model — your funds live in your HedgeHog account, and no one else can move them.
+---
+
+<ArchitectureDiagram />
+
+## The short version
+
+You connect your wallet. Your **HedgeHog account** is deployed for you on-chain — a smart contract you own. Every position (Aave aTokens, Uniswap LP positions, debt) is held by that account. The account routes each operation through protocol connectors and strategies. Nothing is ever held by a HedgeHogs-controlled wallet.
+
+<Callout tone="success" title="Non-custodial">
+  The HedgeHogs admin can pause the protocol and set fee rates, but **cannot move user funds**. Every withdrawal path from your account is owner-only, and it works even while the protocol is paused.
+</Callout>
+
+## The parts
+
+- **Your wallet** — signs transactions, stays in full control.
+- **Your HedgeHog account** — an EIP-1167 clone deployed for you, initialized with you as owner. It is a multicall router: it executes a batch of calls against whitelisted protocol targets, then returns the result. It holds the positions.
+- **Connectors** — stateless adapters (Aave V3, Uniswap V3, Curve, Balancer, Morpho, Compound, Yearn, Aerodrome, PancakeSwap…) that run inside your account's context and talk to each protocol.
+- **Strategies** — the operations themselves. Some are user-callable (supply, borrow, add liquidity). Some are bot-only automations (compound, repay, rebalance).
+- **The automation bot** — executes the strategies you enable, monitored and capped by the protocol's pause switch.
+
+## Why proxy ownership
+
+Some protocols (Aave) allow acting on behalf of a user. Uniswap V3 does not: the LP position is an NFT, and the NFT owner is the position manager — no exceptions. The only way to automate a position that has no delegation is for **your account to own it**, and for the bot to act through that account. That is the model HedgeHogs uses everywhere.
+
+Read on: [the account model](/docs/how-it-works/proxy-model), [approvals](/docs/how-it-works/approvals), [automation](/docs/how-it-works/automation).

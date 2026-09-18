@@ -1,0 +1,26 @@
+---
+title: Auto-collateralize
+description: Turn earnings into extra collateral — the automation that hardens your account against liquidation.
+---
+
+<AutoCollaterizeAnimation />
+
+Auto-collateralize takes a position's earnings and adds them as collateral to your lending account, raising your health factor instead of withdrawing the money.
+
+## The flow
+
+1. Your position earns fees.
+2. The strategy converts them to a collateral asset.
+3. It supplies them to your lending account — your collateral grows, your health factor rises, and your liquidation buffer thickens.
+
+## Why it exists
+
+It is the mirror of Auto-repay: instead of shrinking the debt, it grows the collateral. Both defend the health factor; they differ in what they do with the position's earnings.
+
+## Pricing
+
+**Auto-collateralize** runs at **0.05% of rewards** (see [Fees](/docs/reference/fees)).
+
+## Set it up
+
+In **/strategies → Create automation**, choose **Auto-collateralize**, link the position and the lending account, and it keeps feeding collateral in while conditions are met.

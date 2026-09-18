@@ -1,0 +1,30 @@
+---
+title: Quick start
+description: Connect your wallet, deploy your HedgeHog account, and make your first move.
+---
+
+Getting started takes three steps. You deploy your HedgeHog account once per chain; everything after routes through it.
+
+<Steps
+  title="Your first run"
+  items={[
+    {
+      title: 'Connect your wallet',
+      children: <>Open <a href="https://hedgehogs.app">the app</a> and press **Connect wallet**. Any injected wallet works — MetaMask, Rabby and other EIP-6963 wallets.</>,
+    },
+    {
+      title: 'Deploy your HedgeHog account',
+      children: <>The first action that needs it — supplying, borrowing, adding liquidity — opens the **Deploy your HedgeHog account** panel. It is a one-time deployment on the chain you are using. You pay gas once; using the account afterwards costs nothing extra.</>,
+    },
+    {
+      title: 'Make your first move',
+      children: <>Head to **Explore** → **Lend** to supply an asset, **Borrow** to take a position against it, or **Pools** to add liquidity. Every write goes through your account.</>,
+    },
+  ]}
+/>
+
+<Callout title="What a HedgeHog account is">
+  It is your own smart-contract wallet on-chain. It holds your positions — Aave aTokens, Uniswap LP positions — and lets automations act on your behalf, without ever taking custody of your main wallet. You are its owner.
+</Callout>
+
+Next: read [Deploy your account](/docs/get-started/deploy-account) for the details, or [how the account works](/docs/how-it-works/architecture) for the non-custodial architecture.

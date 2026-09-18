@@ -1,0 +1,26 @@
+---
+title: Auto-harvest
+description: Move profits out of the position and back to your wallet — or where you want them to go.
+---
+
+<AutoHarvestAnimation />
+
+Auto-harvest collects a position's earned fees and rewards and sends them where you choose — back to your wallet, or converted to a preferred token.
+
+## The flow
+
+1. Your position accrues fees and rewards.
+2. The strategy collects them once they cross your floor.
+3. It optionally swaps them to your chosen token and moves them out — the position keeps running, the earnings land somewhere useful.
+
+## What it is for
+
+Rewards only compound if they are reinvested, and they only matter if they reach you. Auto-harvest is the "take the profits" side of the loop, and it pairs naturally with Auto-compound (reinvest some, withdraw some).
+
+## Pricing
+
+**Auto-harvest** runs at **1% of rewards** (see [Fees](/docs/reference/fees)).
+
+## Set it up
+
+In **/strategies → Create automation**, choose **Auto-harvest**, link the position, set the floor and the destination, and the bot collects it for you from there.

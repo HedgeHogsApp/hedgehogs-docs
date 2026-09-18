@@ -1,0 +1,41 @@
+---
+title: Dashboard tour
+description: Net worth, your positions, and where each panel comes from — a quick map of /portfolio.
+---
+
+The dashboard — **/portfolio** — is your command center. It shows everything your HedgeHog accounts hold, and where your money can go.
+
+## The banner
+
+At the top, one card shows:
+
+- **Net worth** — your supplied value plus LP positions, minus debt.
+- The chains your portfolio holds something on, as small logos.
+- A **value chart** of your HedgeHog accounts over time (1D · 7D · 30D · 12M). Wallet balances are not tracked yet.
+- A compact **health factor** with its band word, covering the protocols it counts.
+- **Fast links** under a divider — one button per alert (near liquidation, out of range, rewards claimable, automations paused).
+
+## The panels
+
+Below the banner, six panels order themselves by the value they hold:
+
+| Panel | What it shows | Where a new position comes from |
+|---|---|---|
+| **Liquidity** | Uniswap, Aerodrome, PancakeSwap, Curve and Balancer LP positions | Explore → Pools |
+| **Lending** | Supplies and debts on Aave, Morpho and Compound, per account | Explore → Lend / Borrow |
+| **Vaults** | Yearn vault deposits | Explore → Vaults |
+| **Strategies** | Your automations — repay, harvest, compound | /strategies |
+| **Idle** | Tokens sitting in your wallet, with the best supply rate for each | Explore → Lend |
+| **Activity** | Your actions, grouped by day | — |
+
+Each panel can be filtered by chain and protocol. **Show all** opens the full list in the side panel.
+
+## Reading a position
+
+Tap any row to open the detail panel: the position's figures (value, earned, APY, range, health factor) and its actions — **Supply**, **Borrow**, **Repay**, **Withdraw**, **Collect fees**, **Add**, **Remove**, **Rebalance**. Actions live in the detail panel, not in the table.
+
+<Callout tone="warning" title="Wallet-held tokens">
+  A token still in your wallet (not yet deposited into an account) is not something HedgeHogs can act on yet — that is why Idle offers to move it: **Supply to Aave**, **Add liquidity with Zap In**, or **Swap**.
+</Callout>
+
+Next: understand [how the account works](/docs/how-it-works/architecture).

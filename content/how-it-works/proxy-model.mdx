@@ -1,0 +1,49 @@
+---
+title: The account model
+description: One account per chain, owned by you — what it can do, what the bot can do, and what neither can.
+---
+
+Your HedgeHog account is one smart contract per chain. It is the only entity that holds your positions and the only entity that executes HedgeHogs operations.
+
+## What the account is
+
+- Deployed deterministically (the same address for the same wallet on a chain, so it is predictable).
+- Owned by you — set at deploy, transferable by you only.
+- A **multicall router**: it runs a batch of calls against protocol targets that the protocol directory whitelists. Nothing else.
+- Holders of your positions: aTokens, LP NFTs, vault shares, debt.
+
+## What the owner can do
+
+- Withdraw funds — ETH, ERC-20s and NFTs — at any time, even during a protocol pause.
+- Approve or revoke the automation bot (`setApproved`), instantly.
+- Transfer ownership (two-step).
+- Execute any user strategy.
+
+## What the bot can do
+
+The bot is the address you approve. It can only call strategies that are **both** approved and flagged bot-callable, and only execute the automation functions inside them (compound, harvest, repay, rebalance, collateralize…). Strategy proceeds always go **to you**, never to an arbitrary address.
+
+<Callout tone="warning" title="The bot can never">
+  Withdraw funds to itself, transfer tokens out of your account, change ownership, or execute anything you have not enabled. Its reach is the set of bot strategies the directory allows, nothing more.
+</Callout>
+
+## What the protocol admin can do
+
+The HedgeHogs admin (a timelocked admin role) can:
+
+- Pause the protocol — which halts new operations (but **not** your owner-only withdrawals, and **not** your ability to revoke the bot).
+- Manage whitelists — which protocols, strategies and routers are allowed.
+- Set fee rates (capped) and the fee collector (with a 3-day timelock).
+
+The admin **cannot** access or move user funds. The only money that flows to admin-controlled accounts is the fee charged per operation.
+
+## The two calls that matter
+
+```solidity
+// You: approve the automation bot to execute your enabled strategies.
+account.setApproved(botAddress);
+
+// You: take ownership back / withdraw everything, owner-only.
+account.transferOwnership(newOwner);
+account.transferERC20(token, recipient, amount);
+```

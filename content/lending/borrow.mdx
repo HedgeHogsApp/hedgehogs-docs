@@ -1,0 +1,28 @@
+---
+title: Borrow
+description: Borrow against your collateral, watch the projected health factor, and know your margin.
+---
+
+Borrowing takes a loan against the collateral you have supplied. The loan and the collateral are both held by your HedgeHog account.
+
+## From Explore
+
+1. Open **Explore** → **Borrow**.
+2. Tap the asset you want to borrow. The drawer opens pre-filled with the market's context: **Borrow APR**, **Available liquidity**.
+3. The form shows your **health factor** and its projection after the action — so you see the margin you are borrowing into before you confirm.
+
+## What the form shows
+
+- **Health factor after** — projected from your real positions, not a guess.
+- **Borrow APR** and available liquidity from the market.
+- **E-Mode** — if the market supports it, the account panel lets you change it for tighter, cheaper borrowing against correlated assets.
+
+## The rule of thumb
+
+The nearer your health factor is to 1, the smaller your safety margin. Keep a buffer for volatility.
+
+<Callout tone="warning" title="Liquidation">
+  If your health factor drops below 1, lenders can liquidate your collateral. The dashboard flags **Near liquidation** as an alert, and [Auto-repay](/docs/automations/auto-repay) exists precisely to keep you above it.
+</Callout>
+
+Next: [Repay](/docs/lending/repay).

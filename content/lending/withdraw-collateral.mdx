@@ -1,0 +1,26 @@
+---
+title: Withdraw & collateral
+description: Take supplied assets back, switch collateral, and change E-Mode.
+---
+
+Two things live in the same place: getting your supplied assets out, and deciding what counts as collateral.
+
+## Withdraw
+
+1. Open your supplied position from **Lending**.
+2. Press **Withdraw** (or **Withdraw collateral**).
+3. Choose the amount. Withdrawing collateral that backs debt lowers your health factor — the form projects it before you confirm.
+
+## Use as collateral
+
+Each supplied asset can be toggled **Use as collateral**. Turn it off if you want the asset out of the liquidation pool (your debt stops being backed by it — watch the health factor), or on to increase your borrowing capacity.
+
+## Change E-Mode
+
+E-Mode bundles correlated assets into a more efficient basket: higher LTV and lower borrow APR for that category. It is available where the market supports it, and refused (with a worded reason) when it cannot apply to the account you have.
+
+<Callout tone="warning" title="Reasons are true of the thing they refuse">
+  A frozen reserve refuses the action on that leg, not the whole account. If one leg of your account is frozen, the others still act normally.
+</Callout>
+
+Next: [Health factor](/docs/lending/health-factor).

@@ -1,0 +1,26 @@
+---
+title: Approvals
+description: Approve your account once per token — the account handles every protocol approval just-in-time.
+---
+
+<ApprovalsDiagram />
+
+## The two sides of an approval
+
+In normal DeFi you approve each protocol for each token — and you repeat it whenever a new protocol touches a token. HedgeHogs splits that in two:
+
+1. **You → your account: one approval per token.** You approve your HedgeHog account to spend a token. It is the only approval you ever sign for that token.
+2. **Your account → each protocol: just-in-time.** When an operation needs a protocol, the connector approves the **exact amount**, makes the call, then resets the allowance back to zero. There is no standing allowance sitting on a protocol contract.
+
+## Why just-in-time
+
+A standing unlimited allowance on a protocol contract is a standing risk — if that protocol's contract is ever compromised, it can drain it. A JIT approval is approved for one operation, used, and revoked in the same transaction. It is narrower, and it resets.
+
+## What you actually approve
+
+- Your account (unlimited, one per token you use).
+- Optionally, the automation bot, so it can execute your enabled strategies on your behalf. You can revoke it anytime.
+
+## What this means for you
+
+You never hunt for "approve USDC on Aave", then "approve USDC on Uniswap". You approve USDC to your account once, and every market that needs it is reachable from there.

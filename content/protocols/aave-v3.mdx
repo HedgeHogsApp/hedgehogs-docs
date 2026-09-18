@@ -1,0 +1,32 @@
+---
+title: Aave V3
+description: The lending market HedgeHogs reads and writes — what is measured and what you can do.
+---
+
+Aave V3 is the reference lending market. Your account reads its reserves and writes against them through the Aave V3 connector.
+
+## What HedgeHogs reads
+
+- **Supply APY** and **borrow APR** per reserve.
+- **LTV** and **liquidation threshold** — whether an asset can be collateral and at what rate.
+- **Available liquidity** — how much of a reserve is left to supply or borrow.
+- Your positions: aToken balances, debt, health factor.
+
+## What you can do
+
+| Action | Route |
+|---|---|
+| Supply | Explore → Lend, or Idle → Supply to Aave |
+| Borrow | Explore → Borrow |
+| Repay | Lending account → **Repay** (or **Repay with aTokens**) |
+| Withdraw | Supplied position → **Withdraw** |
+| Collateral | Account → **Use as collateral** |
+| E-Mode | Account → **Change E-Mode** |
+
+## Fee
+
+Supplying and borrowing carry a **0%** protocol fee in the current schedule (governance-set; see [Fees](/docs/reference/fees)).
+
+## Why it works through an account
+
+Aave supports acting on behalf of a user, but HedgeHogs routes everything through your account anyway — so the same account, approvals and automation cover every protocol uniformly, including the ones with no delegation.

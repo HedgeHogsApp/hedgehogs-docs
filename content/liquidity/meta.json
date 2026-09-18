@@ -1,0 +1,4 @@
+{
+  "title": "Liquidity",
+  "order": ["add-liquidity", "manage-range", "remove-and-fees"]
+}

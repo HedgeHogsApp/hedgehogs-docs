@@ -1,0 +1,26 @@
+---
+title: Auto-repay
+description: Use earned fees to pay down debt — the automation that keeps your health factor above water.
+---
+
+<AutoRepayAnimation />
+
+Auto-repay takes a position's earnings and uses them to repay your borrowed debt when the health factor drops below a threshold you set.
+
+## The flow
+
+1. Your position earns fees.
+2. The strategy checks your debt's health factor.
+3. When it crosses your threshold, it swaps earnings to the debt asset and repays — your debt shrinks, your health factor recovers.
+
+## Why it exists
+
+A low health factor is the one number that can force liquidation. Auto-repay is the automation that answers it before anyone has to look at a screen. The **Auto-repay** price is **0.05% of rewards** (see [Fees](/docs/reference/fees)).
+
+<Callout tone="warning" title="Health factor first">
+  The **Repay** action in the account panel is still the primary remedy you can do by hand — the automation is the set-and-forget version of the same decision.
+</Callout>
+
+## Set it up
+
+In **/strategies → Create automation**, choose **Auto-repay**, link the Aave loan it manages, and set the repay threshold. The strategy runs through your account, and its proceeds always return to you.

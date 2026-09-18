@@ -1,0 +1,27 @@
+---
+title: Remove & fees
+description: Collect what your position earned, then close it — in the order that keeps your money moving.
+---
+
+Two different exits from an LP position: take the earnings, or take everything out.
+
+## Collect fees
+
+1. Open your **Liquidity** position.
+2. Press **Collect fees**. The earned amount — with uncollected fees in the tooltip — moves to your account.
+
+## Remove
+
+Removing pulls liquidity out of the range. Combined with collecting, this is the natural way to reduce a position without closing it.
+
+## Close a position
+
+Closing removes all liquidity and burns the LP NFT. The position disappears from the dashboard ("this position is closed"), and the underlying tokens return to your account.
+
+<Callout tone="warning" title="Order matters when it is a strategy">
+  If the position is managed by a strategy, **Exit & Uninstall** in /strategies closes every linked position and sweeps the funds back to your wallet in the correct order — remove, collect, burn — instead of managing each NFT by hand.
+</Callout>
+
+## What fees cost
+
+Manual LP operations and harvests carry the fees listed in [Fees](/docs/reference/fees): supply and LP entry are **0%**, harvest is 0.5%, zap 0.1%. Automations are priced separately and often cheaper than doing it manually.

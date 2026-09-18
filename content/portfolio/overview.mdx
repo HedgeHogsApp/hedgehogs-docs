@@ -1,0 +1,31 @@
+---
+title: Portfolio overview
+description: Net worth, the value chart, health factor and the six panels that make up the dashboard.
+---
+
+The dashboard is built around your numbers, not the market. Here is each block and where it comes from.
+
+## Net worth and the chart
+
+The banner's left side shows **Net worth** — idle + supplied + LP value, minus debt — with the chains you hold something on. Under it, a scrubbable chart shows your **HedgeHog accounts** over time (1D · 7D · 30D · 12M). The chart is honest about its scope: *HedgeHog accounts −$X · −Y%* in the caption, with *Wallet balances not tracked yet* underneath.
+
+## Health factor
+
+The banner's right side shows a compact **health factor** with its band word (Safe, Caution, Near liquidation) and the protocols it covers. A separate worded line explains the band — colour is never the only signal.
+
+## The panels
+
+Six panels, ordered by value held:
+
+- **Liquidity** — your LP positions across Uniswap, Aerodrome, PancakeSwap, Curve and Balancer. Columns: Value · Earned · APY · range.
+- **Lending** — accounts per protocol × chain, showing Debt · Collateral · Health factor.
+- **Vaults** — Yearn deposits.
+- **Strategies** — your automations with a Status column.
+- **Idle** — wallet tokens, with the best supply rate for each.
+- **Activity** — your actions, grouped by day.
+
+Each panel loads from its own source and shows its own states: loading skeleton, a one-line failure with Retry, an empty state with one CTA, or the content. One source failing never blanks a sibling.
+
+<Callout tone="info" title="Empty cards are a next step">
+  "No liquidity positions yet" → **Explore pools**. "No loans or supplies yet" → **Explore lending**. "No vault deposits yet" → **Explore vaults**. "No strategies yet" → **Create a strategy**. "No idle tokens" → **Swap tokens**.
+</Callout>

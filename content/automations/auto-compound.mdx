@@ -1,0 +1,22 @@
+---
+title: Auto-compound
+description: Reinvest earned fees back into the position — the difference between simple and compound growth.
+---
+
+<AutoCompoundAnimation />
+
+Auto-compound collects a position's fees and re-deposits them into the same position. Left to itself, a position earns interest on the original capital; compounded, it earns interest on the interest.
+
+## The flow
+
+1. Your LP position generates fees.
+2. The strategy harvests them and swaps any non-target token to keep the balance right.
+3. It adds the proceeds back into the position — the position grows, the next harvest grows with it.
+
+## When it triggers
+
+Auto-compound runs when collected fees cross the floor you set. It is priced at **1% of rewards** (see [Fees](/docs/reference/fees)).
+
+## Set it up
+
+In **/strategies → Create automation**, choose **Auto-compound**, link the LP position it manages, and set the routing split. Everything after is the bot's job.

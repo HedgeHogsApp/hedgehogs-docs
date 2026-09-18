@@ -1,0 +1,33 @@
+---
+title: Contracts
+description: The reference map of the protocol's smart contracts — one line each, with the source.
+---
+
+This is the reference surface for developers. The code is the truth; everything here is a pointer to it.
+
+## Core
+
+| Contract | What it is |
+|---|---|
+| `HH.sol` | Your account — the EIP-1167 clone that routes delegatecall multicalls to whitelisted protocol targets. |
+| `HHFactory.sol` | Deploys your account deterministically; tracks owner → account. |
+| `HHDirectory.sol` | Protocol config: fee registry, whitelists, pause, collectors, referral. |
+| `ProtocolDirectory.sol` | Which protocol addresses are allowed. |
+| `PositionReader.sol` | The view surface the app reads (accounts, positions, health factor). |
+
+## Connectors (stateless)
+
+Aave V3 · Uniswap V3 · PancakeSwap V3 (+ MasterChef) · KyberSwap (+ Zap) · Zap V3 · Curve V2/V3 · Balancer V2 · Compound V3 · Morpho Blue · Yearn V3 · Aerodrome (+ Slipstream) · NFT Transfer. Each is a stateless adapter that runs inside your account's context.
+
+## Strategies
+
+- **User-callable:** Aave V3 Lending, Morpho Lending, Compound V3, Curve, Yearn V3, Balancer V2, Aerodrome V2, PancakeSwap V3, Orchestrated Multicall, Aave Migration.
+- **Bot-only automations:** Auto Compound, Auto Harvest, Auto Rebalance, Auto Repay, Auto Collateralize, Auto Hedge, Auto Stop-Loss, Auto Take-Profit, Auto Sweep & Deposit, Auto Refinance, Auto Migrate Yearn, Aerodrome Auto-Stake.
+
+## Fee & approval libraries
+
+`FeeSchedule.sol` (the seeded fee table), `FeesLib.sol` (charging), `TransferLib.sol` (token movement between wallet, account and protocols), `RouterGuard.sol` (router allowlist).
+
+<Callout tone="info" title="Source">
+  Everything above lives in [HedgeHogsApp/hedgehogs-contracts](https://github.com/HedgeHogsApp/hedgehogs-contracts) — `src/strategies/`, `src/connectors/`, `src/core/`. Read the contracts for details; this page links, it does not re-print.
+</Callout>

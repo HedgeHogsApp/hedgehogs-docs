@@ -1,0 +1,35 @@
+---
+title: Reading positions
+description: What each row means, what the detail panel offers, and where the numbers come from.
+---
+
+Every row in the dashboard is a fact about one of your positions. This page explains how to read it.
+
+## Rows
+
+- **Identity first.** The name is line one; chain and protocol badges sit under it. The whole row opens the detail panel.
+- **One figure per cell.** Value, Earned (with uncollected fees in the tooltip), APY. The exact value is always in the accessible name.
+- **Lending rows are accounts.** Each row is one account (holder × chain × protocol) showing Debt · Collateral · Health factor — not one leg per row.
+- **Range is a band word.** An LP out of range tints the row and says so in its tooltip; it is not spelled out three times.
+
+## The detail panel
+
+Tapping a row opens the side panel with the position's live readings and its actions. What you see depends on the kind of position:
+
+| Kind | Stats | Actions |
+|---|---|---|
+| **Lending leg** | Balance, Value, Supply APY / Borrow APR, Health factor | Supply more · Withdraw · Use as collateral |
+| **Lending account** | Debt, Collateral, Health factor + its legs | **Repay** · Supply more · Use as collateral · Change E-Mode |
+| **Liquidity** | LP tokens, Value, Earned, APY, Range | Collect fees · Add · Remove · Rebalance |
+| **Vault** | Balance, Value, APY | Deposit · Withdraw |
+| **Idle** | Balance, Value, best supply rate | Supply to Aave · Add liquidity with Zap In · Swap |
+
+## Where the numbers come from
+
+- On-chain readings: your account balances, positions, health factor.
+- Market context comes from the source protocol (supply APY, borrow APR, available liquidity, LTV) — never estimated.
+- A figure that has no source renders **—**, not a guess. Unknown is neutral, never green, never infinite.
+
+## When an action is unavailable
+
+A disabled action keeps its label and carries a worded reason: *"Held in your wallet — HedgeHogs acts through your HedgeHog account"* for wallet-held tokens, or *"Deploy a HedgeHog account to \<verb\> from here."* when you have no account on that chain yet.

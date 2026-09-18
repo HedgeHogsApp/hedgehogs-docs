@@ -1,0 +1,31 @@
+---
+title: Automation
+description: Put a position on autopilot — how strategies are built, how the bot runs them, and what you keep control of.
+---
+
+<StrategyFlowAnimation />
+
+HedgeHogs automation is the loop you see above: earn fees, reinvest or repay, keep the position healthy — with no one watching the screen.
+
+## How it works
+
+- A **strategy** is a set of rules attached to specific positions: harvest fees above a floor, compound them back in, rebalance a ranged LP past a band, repay debt when the health factor drops.
+- You configure strategies in **/strategies** with the **New automation** wizard: **Name → Entities → Routing → Protections → [Authorize] → Review**.
+- Strategies are chain-keyed, and their rules point at **specific positions** (your LP, your loan, your supplied collateral).
+- To run, a strategy needs you to **authorize the bot** — a one-time on-chain step. You can pause a strategy, edit it, or revoke the bot entirely.
+
+## What the bot does — and cannot do
+
+The bot checks your positions and executes a strategy when its conditions are met. Every execution happens **through your account**, with the account's rules enforced on-chain. The bot never holds custody, and its proceeds always return to you.
+
+<Callout tone="info" title="Strategies you can build">
+  **Auto-harvest** — collect fees once they cross a floor. **Auto-compound** — harvest then re-deposit into the position. **Auto-rebalance** — re-center a ranged LP when price drifts past a band. Plus repay, collateralize, take-profit, stop-loss, sweep, refinance and more.
+</Callout>
+
+## Emergencies
+
+- **Pause / resume** — flip any strategy on or off; the change applies to the next check.
+- **Exit & Uninstall** — closes every position a strategy manages and sweeps the funds back to your wallet.
+- If you ever want nothing running: **revoke the bot**. It cannot act the moment you do.
+
+Dive into each primitive: [Auto-compound](/docs/automations/auto-compound), [Auto-repay](/docs/automations/auto-repay), [Auto-rebalance](/docs/automations/auto-rebalance), [Auto-harvest](/docs/automations/auto-harvest), [Auto-collateralize](/docs/automations/auto-collateralize).

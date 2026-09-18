@@ -1,0 +1,20 @@
+---
+title: Activity
+description: The per-event feed of everything your accounts did, with USD only where it was measured.
+---
+
+The **Activity** panel is a per-day feed of the actions your HedgeHog accounts performed — each event has an icon, a count and the chains it touched.
+
+## What you see
+
+- **What** — an icon per action kind with its count (`2 supplies · 1 borrow · …`). Icons come from one shared set, so the same action reads the same everywhere.
+- **When** — `Today`, `Yesterday`, or `Sep 12 · 3 days ago`.
+- Each day opens its events; each event opens the transaction and shows where the money went.
+
+## What counts as an event
+
+Supplies, borrows, repays, withdrawals, LP actions, harvests, compounds — anything a strategy or you executed through an account. The feed is per event, not a rolling summary.
+
+## USD — only where it was measured
+
+A figure in the feed is shown in dollars only when the underlying value is measured. Where there is no reliable source, the amount is shown in the token itself — never an estimated dollar figure. This is the same honesty rule as the rest of the dashboard: a missing measurement renders **—**, a measured zero renders `0.00`.

@@ -1,0 +1,36 @@
+---
+title: Automations overview
+description: What a strategy is, how one is built, and the primitives you can mix.
+---
+
+An automation is a set of rules attached to your specific positions. The bot executes those rules through your HedgeHog account. You build one in **/strategies** → **Create automation**.
+
+## The wizard
+
+**Name → Entities → Routing → Protections → [Authorize] → Review**
+
+1. **Name** the strategy so you can find it later.
+2. **Entities** — pick the exact positions it manages: your LP positions, Aave loans, or Aave supplied collateral.
+3. **Routing** — how the strategy's proceeds are split (`Harvest 60% · Compound 40%`).
+4. **Protections** — per-position rebalance / take-profit / stop-loss; per-loan repay threshold and emergency exit.
+5. **Authorize** — one-time approval of the bot (only if not already approved).
+6. **Review** and create.
+
+## The primitives
+
+| Primitive | What it does | Read more |
+|---|---|---|
+| **Auto-compound** | Reinvest earned fees back into the position | [guide](/docs/automations/auto-compound) |
+| **Auto-repay** | Pay down debt when the health factor drops | [guide](/docs/automations/auto-repay) |
+| **Auto-rebalance** | Re-center a ranged LP when price drifts | [guide](/docs/automations/auto-rebalance) |
+| **Auto-harvest** | Move profits back to your wallet | [guide](/docs/automations/auto-harvest) |
+| **Auto-collateralize** | Turn earnings into extra collateral | [guide](/docs/automations/auto-collateralize) |
+| Plus | Take-profit, stop-loss, auto-sweep, auto-hedge, auto-refinance, yearn migrate | reference |
+
+## Managing
+
+Each strategy card shows its trigger, last run, next run, and attributable P&L. You can **Pause / Resume**, **Edit**, **Share** the template, or **Exit & Uninstall** — which closes every linked position and sweeps the funds to your wallet.
+
+<Callout tone="warning" title="Overlap">
+  If two strategies would manage the same position, the wizard warns **Already automated by another strategy** before you create the second one.
+</Callout>

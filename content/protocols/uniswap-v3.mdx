@@ -1,0 +1,29 @@
+---
+title: Uniswap V3
+description: Concentrated-liquidity positions — the reason the proxy model exists, and what you can do with them.
+---
+
+Uniswap V3 is the flagship concentrated-liquidity market: you pick a price range, put two tokens in, and earn trading fees while the price stays inside it.
+
+## What HedgeHogs reads
+
+- Pool TVL, active TVL, 7d fees, annual APR, fee tier.
+- Your position: the pair, the range, token amounts, uncollected fees, earned.
+
+## What you can do
+
+| Action | Route |
+|---|---|
+| Add liquidity | Explore → Pools, or Zap In with one token |
+| Collect fees | Liquidity position → **Collect fees** |
+| Add / Remove | Liquidity position panel |
+| Rebalance | Liquidity position → **Rebalance** (or Auto-rebalance) |
+| Close | Liquidity position → remove + burn |
+
+## Why the account must own the NFT
+
+Uniswap V3 has no `onBehalfOf`: the LP position is an NFT, and the NFT owner is the only manager — no exceptions. The only way to automate it is for **your account to own the NFT**, and for the bot to act through your account. This is the core reason HedgeHogs is proxy-centric.
+
+## Fee
+
+LP provisioning carries a **0%** protocol fee in the current schedule; manual harvests are 0.5%; zaps 0.1% (see [Fees](/docs/reference/fees)).

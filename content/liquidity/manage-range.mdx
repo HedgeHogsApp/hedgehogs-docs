@@ -1,0 +1,26 @@
+---
+title: Manage your range
+description: The range you chose is the only part of an LP position that needs attention — and it is automatable.
+---
+
+A concentrated-liquidity position earns fees only while the market price is inside the range you set. That is the whole job of managing an LP position.
+
+## In range, out of range
+
+- **In range** — the position earns fees.
+- **Out of range** — the position earns nothing. The dashboard tints the row, says the band word in the tooltip, and can surface an **Out of range · \<pair\>** alert.
+
+## What you can do
+
+- **Collect fees** — pull what the position has earned so far.
+- **Add** — put more into the position, same range.
+- **Remove** — take liquidity out.
+- **Rebalance** — close the old range and reopen a fresh one around the current price.
+
+<Callout tone="info" title="Rebalance is for automation">
+  Since rebalancing is the recurring chore of an LP, it is built as an automation first: **Auto-rebalance** re-centers the range when price drifts past a band you set. You can still rebalance manually — but the automation is the product.
+</Callout>
+
+## The mental model
+
+Providing concentrated liquidity is renting out your capital in a price window. The window is the only decision; everything after is keeping it in the right place — and that is exactly what HedgeHogs automates.

@@ -1,0 +1,26 @@
+---
+title: Auto-rebalance
+description: Re-center a ranged LP when price drifts past a band — the automation that keeps concentrated liquidity earning.
+---
+
+<AutoCompoundAnimation />
+
+Auto-rebalance re-centers a concentrated-liquidity position when the market price drifts out of your range. It is the automation-first answer to the LP chore: an out-of-range position earns nothing until someone moves it.
+
+## The flow
+
+1. The strategy watches the price against your position's range.
+2. When price drifts past your band, it closes the old range and reopens a fresh one around the current price — collecting the position's value first.
+3. The position is back in range, earning fees again.
+
+## Why it is built as an automation
+
+Concentrated liquidity earns fees only inside its range. Checking and re-centering is exactly the job a bot does better than a screen. **Auto-rebalance** runs at **0.01% of position** per rebalance (see [Fees](/docs/reference/fees)).
+
+<Callout tone="info" title="Manual still exists">
+  You can rebalance by hand from the position's detail panel. The docs just lead with the automation — that is the product.
+</Callout>
+
+## Set it up
+
+In **/strategies → Create automation**, choose **Auto-rebalance**, link the LP position, and set the band — how far price may drift before the range is re-centered.

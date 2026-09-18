@@ -1,0 +1,40 @@
+---
+title: Security
+description: The non-custodial model, what an audit found, what was fixed, and what to verify yourself.
+---
+
+HedgeHogs is non-custodial by construction, and this page says so without dressing it up.
+
+## The model
+
+- Your funds live in **your** HedgeHog account, which **you** own.
+- The admin can pause the protocol and set fee rates, but **cannot move user funds**.
+- Only you can withdraw. Your withdrawals work even during a pause, and you can revoke the bot instantly.
+- Every operation's proceeds return to you.
+
+## Audit status — as it stands
+
+A **Hashlock preliminary audit** (May 2026) of the smart contracts found **1 High, 13 Medium and 22 Low** severity issues, all listed as unresolved in the report.
+
+Those findings were **fixed in code** and covered by regression tests — the tracker in `hedgehogs-contracts/HASHLOCK_FIX.md` marks all 36 resolved — and the report's High (a slippage check that broke cross-decimal swaps) is replaced by a price-aware check in the current source. **However, Hashlock has not yet re-verified the fixes**; no clean / passing audit is published.
+
+<Callout tone="danger" title="Read this plainly">
+  There is no "audited and safe" claim here. The contracts are under active development, the last external review is not yet re-verified, and DeFi carries real risk. Start small, understand what you hold, and never risk what you cannot afford to lose.
+</Callout>
+
+## What to verify yourself
+
+- The code is open source in [HedgeHogsApp/hedgehogs-contracts](https://github.com/HedgeHogsApp/hedgehogs-contracts).
+- The Hashlock report, the fix tracker, and the in-repo "final audit" document (an internal, AI-assisted review — not a third-party audit) are all in the same repo. Read them before you judge.
+- Always check the address of anything you interact with by hand against the per-chain deployment output.
+
+## Your controls
+
+- **Revoke the bot** at any time — instant, effective, even during a pause.
+- **Withdraw** anything, anytime, owner-only.
+- **Pause** any strategy from /strategies.
+- **Exit & Uninstall** to close a strategy's positions and sweep funds back to your wallet.
+
+## Reporting
+
+Found a bug? Open an issue on [HedgeHogsApp/hedgehogs-contracts](https://github.com/HedgeHogsApp/hedgehogs-contracts) or reach the team privately. Responsible disclosure is appreciated.

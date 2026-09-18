@@ -1,0 +1,4 @@
+{
+  "title": "Automations",
+  "order": ["overview", "auto-compound", "auto-repay", "auto-rebalance", "auto-harvest", "auto-collateralize"]
+}

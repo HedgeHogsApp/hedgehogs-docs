@@ -1,0 +1,29 @@
+---
+title: Health factor
+description: The single number that says how safe your borrowed position is — and what each band means.
+---
+
+Your health factor is the ratio of your collateral value to your debt, adjusted by each market's liquidation threshold. It is the number that decides whether you can be liquidated.
+
+## The bands
+
+| Band | Health factor | What it means |
+|---|---|---|
+| **Safe** | comfortably above 1 | Your collateral comfortably covers your debt. |
+| **Caution** | approaching 1 | Price moves can put you at risk quickly. |
+| **Near liquidation** | close to 1 | You can be liquidated if the value of your collateral drops further. |
+
+The dashboard shows the band word under the health factor, and each band's meaning in a tooltip — the tint alone is never the communication.
+
+## Where it is
+
+- The **portfolio banner** — a compact health factor with its band word.
+- Each **Lending account** — Debt · Collateral · Health factor.
+- Every **borrow or repay form** — the health factor now and after the action.
+
+## What to do near the edge
+
+1. **Repay** — the primary remedy, one action in the account panel.
+2. **Supply more collateral** — raise the ratio from the other side.
+3. **Turn collateral on** — if an asset is not backing your debt yet, toggle Use as collateral.
+4. Or let **Auto-repay** / **Auto-collateralize** handle it: both act when the health factor crosses a threshold you set, using the position's own earnings.

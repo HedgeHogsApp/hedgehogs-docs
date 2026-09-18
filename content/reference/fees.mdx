@@ -1,0 +1,43 @@
+---
+title: Fees
+description: The seeded fee schedule, who pays what, and the governance caveat.
+---
+
+Fees are charged per operation, on a **basis** decided by who executes it: you (manual) or the bot (automated). Two contexts exist: `USER` and `BOT`.
+
+<Callout tone="warning" title="Governance-set, not a promise">
+  The rates below are the **seeded schedule** from `FeeSchedule.sol`. Every rate is stored in the directory's fee registry and can be re-priced by governance at any time — the app shows the live rate for each operation.
+</Callout>
+
+## Manual (you execute)
+
+| Operation | Fee |
+|---|---|
+| Supply / borrow (lending) | **0%** |
+| LP provision | **0%** |
+| Zap (single-token → LP) | 0.1% |
+| Manual rebalance | 0.01% |
+| Harvest (manual) | 0.5% |
+| Stop-loss / take-profit (automated close) | 0.5% |
+
+## Automated (the bot executes)
+
+| Operation | Fee |
+|---|---|
+| Auto-harvest | 1% of rewards |
+| Auto-compound | 1% of rewards |
+| Auto-repay | 0.05% of rewards |
+| Auto-collateralize | 0.05% of rewards |
+| Auto-rebalance | 0.01% of position |
+| Emergency exit | 1% of position |
+
+## Caps & discounts
+
+- The protocol caps every fee at **4%** (`MAX_FEE_BPS`).
+- Referrals: invitee discount up to 5%, referrer share up to 10%, combined capped at 50% of the fee.
+
+## Where fees go
+
+Fees are collected to the protocol collector address on each operation. The rest of every transaction is yours.
+
+Source: `hedgehogs-contracts/src/libraries/FeeSchedule.sol`.
