@@ -1,4 +1,4 @@
 {
   "title": "Protocols & markets",
-  "order": ["supported-chains", "aave-v3", "uniswap-v3", "curve-and-others", "deployments", "contracts"]
+  "order": ["supported-chains", "aave-v3", "uniswap-v3", "curve-and-others", "contracts"]
 }

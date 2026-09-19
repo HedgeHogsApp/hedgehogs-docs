@@ -1,31 +1,27 @@
 ---
 title: Automation
-description: Put a position on autopilot — how strategies are built, how the bot runs them, and what you keep control of.
+description: How the automation network works — strategies are rules your account enforces on your positions.
 ---
 
 <StrategyFlowAnimation />
 
 HedgeHogs automation is the loop you see above: earn fees, reinvest or repay, keep the position healthy — with no one watching the screen.
 
-## How it works
+## The mechanism
 
-- A **strategy** is a set of rules attached to specific positions: harvest fees above a floor, compound them back in, rebalance a ranged LP past a band, repay debt when the health factor drops.
-- You configure strategies in **/strategies** with the **New automation** wizard: **Name → Entities → Routing → Protections → [Authorize] → Review**.
-- Strategies are chain-keyed, and their rules point at **specific positions** (your LP, your loan, your supplied collateral).
-- To run, a strategy needs you to **authorize the bot** — a one-time on-chain step. You can pause a strategy, edit it, or revoke the bot entirely.
+A **strategy** is a set of rules attached to your specific positions — harvest fees above a floor, compound them back in, rebalance a ranged LP past a band, repay debt when the health factor drops. The bot checks your positions and executes a strategy when its conditions are met.
 
-## What the bot does — and cannot do
+Two things make that safe:
 
-The bot checks your positions and executes a strategy when its conditions are met. Every execution happens **through your account**, with the account's rules enforced on-chain. The bot never holds custody, and its proceeds always return to you.
+1. **Execution goes through your account.** Every strategy call runs inside your HedgeHog account, with its rules enforced on-chain — never through a custody-holding intermediary.
+2. **The bot's reach is the directory's whitelist.** It can only call strategies that are approved *and* bot-callable, and strategy proceeds always return to you. What the bot can and cannot do is on the [account model](/docs/how-it-works/proxy-model) page.
 
-<Callout tone="info" title="Strategies you can build">
-  **Auto-harvest** — collect fees once they cross a floor. **Auto-compound** — harvest then re-deposit into the position. **Auto-rebalance** — re-center a ranged LP when price drifts past a band. Plus repay, collateralize, take-profit, stop-loss, sweep, refinance and more.
-</Callout>
+## Building a strategy
 
-## Emergencies
+Strategies are built in **/strategies** with the **New automation** wizard — Name → Entities → Routing → Protections → [Authorize] → Review — and need you to **authorize the bot** once. The full walkthrough is [Automations overview](/docs/automations/overview); each primitive has its own page.
 
-- **Pause / resume** — flip any strategy on or off; the change applies to the next check.
-- **Exit & Uninstall** — closes every position a strategy manages and sweeps the funds back to your wallet.
-- If you ever want nothing running: **revoke the bot**. It cannot act the moment you do.
+## Staying in control
 
-Dive into each primitive: [Auto-compound](/docs/automations/auto-compound), [Auto-repay](/docs/automations/auto-repay), [Auto-rebalance](/docs/automations/auto-rebalance), [Auto-harvest](/docs/automations/auto-harvest), [Auto-collateralize](/docs/automations/auto-collateralize).
+- **Pause / resume** any strategy; the change applies to the next check.
+- **Exit & Uninstall** closes every position a strategy manages and sweeps the funds back to your wallet.
+- Revoke the bot entirely and nothing can run again — the moment you do.

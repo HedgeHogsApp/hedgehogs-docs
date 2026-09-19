@@ -28,6 +28,22 @@ Aave V3 · Uniswap V3 · PancakeSwap V3 (+ MasterChef) · KyberSwap (+ Zap) · Z
 
 `FeeSchedule.sol` (the seeded fee table), `FeesLib.sol` (charging), `TransferLib.sol` (token movement between wallet, account and protocols), `RouterGuard.sol` (router allowlist).
 
+## Deployments
+
+The protocol is deployed per chain, and the app reads those addresses at runtime. Today:
+
+| Chain | ID | Status |
+|---|---|---|
+| Ethereum Mainnet | 1 | In preparation |
+| Base | 8453 | Live |
+| BNB Smart Chain | 56 | Live |
+
+The canonical, always-current address list (factory, directory, connectors, strategies, position reader) is the deployment output in `hedgehogs-contracts` — `script/Deploy/NetworkConfig.sol` for the config, and the per-chain deployment JSON the deploy scripts emit.
+
+<Callout tone="warning" title="Always verify">
+  In DeFi you interact with what the app points at. For anything you verify by hand, check the address against the contract deployment output for that chain — never against a screenshot or a forum post.
+</Callout>
+
 <Callout tone="info" title="Source">
   Everything above lives in [HedgeHogsApp/hedgehogs-contracts](https://github.com/HedgeHogsApp/hedgehogs-contracts) — `src/strategies/`, `src/connectors/`, `src/core/`. Read the contracts for details; this page links, it does not re-print.
 </Callout>

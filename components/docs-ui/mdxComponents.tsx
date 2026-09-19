@@ -9,6 +9,7 @@ import AutoCompoundAnimation from '@/components/docs/AutoCompoundAnimation'
 import AutoRepayAnimation from '@/components/docs/AutoRepayAnimation'
 import AutoCollaterizeAnimation from '@/components/docs/AutoCollaterizeAnimation'
 import AutoHarvestAnimation from '@/components/docs/AutoHarvestAnimation'
+import AutoRebalanceAnimation from '@/components/docs/AutoRebalanceAnimation'
 
 function slugify(text: string): string {
   return text.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-')
@@ -121,5 +122,6 @@ export function mdxComponents() {
     AutoRepayAnimation,
     AutoCollaterizeAnimation,
     AutoHarvestAnimation,
+    AutoRebalanceAnimation,
   }
 }

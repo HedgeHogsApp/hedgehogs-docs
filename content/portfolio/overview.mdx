@@ -1,31 +1,45 @@
 ---
 title: Portfolio overview
-description: Net worth, the value chart, health factor and the six panels that make up the dashboard.
+description: The dashboard — net worth, the value chart, health factor, the six panels, and how to read a position.
 ---
 
-The dashboard is built around your numbers, not the market. Here is each block and where it comes from.
+The dashboard — **/portfolio** — is your command center. It shows everything your HedgeHog accounts hold, and where your money can go. This page is the whole tour: the banner, the panels, and how to read them.
 
-## Net worth and the chart
+## The banner
 
-The banner's left side shows **Net worth** — idle + supplied + LP value, minus debt — with the chains you hold something on. Under it, a scrubbable chart shows your **HedgeHog accounts** over time (1D · 7D · 30D · 12M). The chart is honest about its scope: *HedgeHog accounts −$X · −Y%* in the caption, with *Wallet balances not tracked yet* underneath.
+At the top, one card shows:
 
-## Health factor
-
-The banner's right side shows a compact **health factor** with its band word (Safe, Caution, Near liquidation) and the protocols it covers. A separate worded line explains the band — colour is never the only signal.
+- **Net worth** — your supplied value plus LP positions, minus debt.
+- The chains your portfolio holds something on, as small logos.
+- A **value chart** of your HedgeHog accounts over time (1D · 7D · 30D · 12M). The chart is honest about its scope — *HedgeHog accounts −$X · −Y%* in the caption, *Wallet balances not tracked yet* underneath.
+- A compact **health factor** with its band word (Safe, Caution, Near liquidation) and the protocols it covers. A worded line explains the band — colour is never the only signal.
+- **Fast links** under a divider — one button per alert (near liquidation, out of range, rewards claimable, automations paused).
 
 ## The panels
 
 Six panels, ordered by value held:
 
-- **Liquidity** — your LP positions across Uniswap, Aerodrome, PancakeSwap, Curve and Balancer. Columns: Value · Earned · APY · range.
-- **Lending** — accounts per protocol × chain, showing Debt · Collateral · Health factor.
-- **Vaults** — Yearn deposits.
-- **Strategies** — your automations with a Status column.
-- **Idle** — wallet tokens, with the best supply rate for each.
-- **Activity** — your actions, grouped by day.
+| Panel | What it shows | Where a new position comes from |
+|---|---|---|
+| **Liquidity** | Uniswap, Aerodrome, PancakeSwap, Curve and Balancer LP positions | Explore → Pools |
+| **Lending** | Supplies and debts on Aave, Morpho and Compound, per account | Explore → Lend / Borrow |
+| **Vaults** | Yearn vault deposits | Explore → Vaults |
+| **Strategies** | Your automations — repay, harvest, compound | /strategies |
+| **Idle** | Tokens sitting in your wallet, with the best supply rate for each | Explore → Lend |
+| **Activity** | Your actions, grouped by day | — |
+
+Each panel can be filtered by chain and protocol. **Show all** opens the full list in the side panel.
 
 Each panel loads from its own source and shows its own states: loading skeleton, a one-line failure with Retry, an empty state with one CTA, or the content. One source failing never blanks a sibling.
 
-<Callout tone="info" title="Empty cards are a next step">
-  "No liquidity positions yet" → **Explore pools**. "No loans or supplies yet" → **Explore lending**. "No vault deposits yet" → **Explore vaults**. "No strategies yet" → **Create a strategy**. "No idle tokens" → **Swap tokens**.
+## Reading a position
+
+Tap any row to open the detail panel: the position's figures (value, earned, APY, range, health factor) and its actions — **Supply**, **Borrow**, **Repay**, **Withdraw**, **Collect fees**, **Add**, **Remove**, **Rebalance**. Actions live in the detail panel, not in the table.
+
+<Callout tone="warning" title="Wallet-held tokens">
+  A token still in your wallet (not yet deposited into an account) is not something HedgeHogs can act on yet — that is why Idle offers to move it: **Supply to Aave**, **Add liquidity with Zap In**, or **Swap**.
 </Callout>
+
+## Empty cards are a next step
+
+"No liquidity positions yet" → **Explore pools**. "No loans or supplies yet" → **Explore lending**. "No vault deposits yet" → **Explore vaults**. "No strategies yet" → **Create a strategy**. "No idle tokens" → **Swap tokens**.
