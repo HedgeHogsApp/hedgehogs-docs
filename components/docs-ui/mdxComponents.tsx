@@ -13,6 +13,11 @@ import AutoRebalanceAnimation from '@/components/docs/AutoRebalanceAnimation'
 import DexIcon from '@/components/DexIcon'
 import CryptoIcon from '@/components/CryptoIcon'
 import { ChainIcon } from '@/components/docs-ui/ChainIcon'
+import { ProtocolHeader } from '@/components/docs-ui/ProtocolHeader'
+import { HfBand } from '@/components/docs-ui/HfBand'
+import { FlowStrip } from '@/components/docs-ui/FlowStrip'
+import { Accordion } from '@/components/ui_components/accordion'
+import { Wallet, ShieldCheck, Landmark, Droplets } from 'lucide-react'
 
 function slugify(text: string): string {
   return text.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-')
@@ -92,20 +97,20 @@ export function mdxComponents() {
       <CodeBlock>{props.children}</CodeBlock>
     ),
     table: (props: React.HTMLAttributes<HTMLTableElement>) => (
-      <div className="scrollbar-thin my-5 overflow-x-auto rounded-lg border border-line bg-surface-panel">
+      <div className="scrollbar-thin my-6 overflow-hidden rounded-lg border border-line bg-surface-panel">
         <table className="w-full border-collapse text-2xs">{props.children}</table>
       </div>
     ),
     thead: (props: React.HTMLAttributes<HTMLTableSectionElement>) => (
-      <thead className="sticky top-0 z-sticky bg-surface-panel">{props.children}</thead>
+      <thead className="bg-surface-panel">{props.children}</thead>
     ),
     th: (props: React.ThHTMLAttributes<HTMLTableCellElement>) => (
-      <th className="border-b border-line px-3 py-2.5 text-left font-semibold text-fg-primary">
+      <th className="whitespace-nowrap border-b border-line-strong px-3 py-2.5 text-left font-semibold text-fg-primary">
         {props.children}
       </th>
     ),
     td: (props: React.TdHTMLAttributes<HTMLTableCellElement>) => (
-      <td className="border-b border-line/70 px-3 py-2.5 align-top text-fg-secondary last:border-0 [&:has(.font-mono)]:tabular-nums">
+      <td className="border-b border-line px-3 py-2.5 align-top text-fg-secondary [&:has(.font-mono)]:tabular-nums">
         {props.children}
       </td>
     ),
@@ -129,5 +134,13 @@ export function mdxComponents() {
     DexIcon,
     CryptoIcon,
     ChainIcon,
+    ProtocolHeader,
+    HfBand,
+    FlowStrip,
+    Accordion,
+    Wallet,
+    ShieldCheck,
+    Landmark,
+    Droplets,
   }
 }

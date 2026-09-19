@@ -3,49 +3,126 @@ title: FAQ
 description: Short answers to the questions that come up most.
 ---
 
-## Getting started
-
-**How do I start?**
-Connect a wallet, let the app deploy your [HedgeHog account](/docs/get-started/deploy-account), then make your first move — [Quick start](/docs/get-started/quick-start).
-
-**What is a HedgeHog account?**
-Your own smart-contract wallet on-chain. It holds your positions and lets automations act on your behalf. You own it. [Read the model](/docs/how-it-works/proxy-model).
-
-**How much do I need?**
-There is no minimum to use the app, but automation is worth its fees at meaningful sizes. Start small and understand what you hold.
-
-**Which chains?**
-Base and BNB Smart Chain are live; Ethereum Mainnet is in preparation. [Supported chains](/docs/protocols/supported-chains).
-
-## Custody & safety
-
-**Is HedgeHogs custodial?**
-No. Your funds live in your account, which you own. The admin can pause the protocol and set fees but cannot move your funds. [Architecture](/docs/how-it-works/architecture).
-
-**Is it audited?**
-A Hashlock preliminary audit found 1 High / 13 Medium / 22 Low; all fixed in code and regression-tested, but not yet re-verified by Hashlock — no clean audit is published. [Security](/docs/security/overview).
-
-**Can the bot take my money?**
-No. The bot can only execute the strategies you enable, and its proceeds always return to you. You can revoke it instantly. [Account model](/docs/how-it-works/proxy-model).
-
-## Fees & costs
-
-**What does it cost?**
-Supply and LP are **0%**; zaps 0.1%; harvest 0.5%; automations from 0.01% (rebalance) to 1% (harvest/compound). Fees are governance-set. [Full table](/docs/reference/fees).
-
-**Why is deploying free in the app but costs gas?**
-Deploying your account is a one-time on-chain deployment — you pay its gas, once, per chain.
-
-## Positions & automation
-
-**How do I see everything I hold?**
-[/portfolio](/docs/portfolio/overview) — net worth, value chart, and six panels for liquidity, lending, vaults, strategies, idle and activity.
-
-**What can I automate?**
-Harvest, compound, rebalance, repay and collateralize — plus take-profit, stop-loss, sweep, hedge and more. [Automations](/docs/automations/overview).
-
-**What happens if I stop paying attention?**
-The strategies keep running while enabled. You can pause, edit or revoke anything at any time — nothing runs without your account.
-
-**Where do I get help?**
-Open an issue on [HedgeHogsApp/hedgehogs-docs](https://github.com/HedgeHogsApp/hedgehogs-docs) for docs, or [HedgeHogsApp/hedgehogs-contracts](https://github.com/HedgeHogsApp/hedgehogs-contracts) for the protocol.
+<Accordion
+  type="single"
+  collapsible
+  items={[
+    {
+      id: 'start',
+      title: 'How do I start?',
+      content: (
+        <p>
+          Connect a wallet, let the app deploy your <a href="/docs/get-started/deploy-account">HedgeHog account</a>, then make your first move — see <a href="/docs/get-started/quick-start">Quick start</a>.
+        </p>
+      ),
+    },
+    {
+      id: 'account',
+      title: 'What is a HedgeHog account?',
+      content: (
+        <p>
+          Your own smart-contract wallet on-chain. It holds your positions and lets automations act on your behalf — you own it. Read the <a href="/docs/how-it-works/proxy-model">account model</a>.
+        </p>
+      ),
+    },
+    {
+      id: 'minimum',
+      title: 'How much do I need?',
+      content: (
+        <p>
+          There is no minimum to use the app, but automation is worth its fees at meaningful sizes. Start small and understand what you hold.
+        </p>
+      ),
+    },
+    {
+      id: 'chains',
+      title: 'Which chains?',
+      content: (
+        <p>
+          Base and BNB Smart Chain are live; Ethereum Mainnet is in preparation. See <a href="/docs/protocols/supported-chains">supported chains</a>.
+        </p>
+      ),
+    },
+    {
+      id: 'custody',
+      title: 'Is HedgeHogs custodial?',
+      content: (
+        <p>
+          No. Your funds live in your account, which you own. The admin can pause the protocol and set fees but cannot move your funds. See <a href="/docs/how-it-works/architecture">architecture</a>.
+        </p>
+      ),
+    },
+    {
+      id: 'audit',
+      title: 'Is it audited?',
+      content: (
+        <p>
+          A Hashlock preliminary audit found 1 High / 13 Medium / 22 Low; all fixed in code and regression-tested, but not yet re-verified by Hashlock — no clean audit is published. See <a href="/docs/security/overview">security</a>.
+        </p>
+      ),
+    },
+    {
+      id: 'bot',
+      title: 'Can the bot take my money?',
+      content: (
+        <p>
+          No. The bot can only execute the strategies you enable, and its proceeds always return to you. You can revoke it instantly. See <a href="/docs/how-it-works/proxy-model">account model</a>.
+        </p>
+      ),
+    },
+    {
+      id: 'costs',
+      title: 'What does it cost?',
+      content: (
+        <p>
+          Supply and LP are 0%; zaps 0.1%; harvest 0.5%; automations from 0.01% (rebalance) to 1% (harvest/compound). Fees are governance-set. See the <a href="/docs/reference/fees">full table</a>.
+        </p>
+      ),
+    },
+    {
+      id: 'deploy-cost',
+      title: 'Why does deploying my account cost gas?',
+      content: (
+        <p>
+          Deploying your account is a one-time on-chain deployment — you pay its gas, once, per chain.
+        </p>
+      ),
+    },
+    {
+      id: 'see-positions',
+      title: 'How do I see everything I hold?',
+      content: (
+        <p>
+          <a href="/docs/portfolio/overview">/portfolio</a> — net worth, a value chart, and six panels for liquidity, lending, vaults, strategies, idle and activity.
+        </p>
+      ),
+    },
+    {
+      id: 'automate',
+      title: 'What can I automate?',
+      content: (
+        <p>
+          Harvest, compound, rebalance, repay and collateralize — plus take-profit, stop-loss, sweep, hedge and more. See <a href="/docs/automations/overview">automations</a>.
+        </p>
+      ),
+    },
+    {
+      id: 'away',
+      title: 'What happens if I stop paying attention?',
+      content: (
+        <p>
+          The strategies keep running while enabled. You can pause, edit or revoke anything at any time — nothing runs without your account.
+        </p>
+      ),
+    },
+    {
+      id: 'help',
+      title: 'Where do I get help?',
+      content: (
+        <p>
+          Open an issue on <a href="https://github.com/HedgeHogsApp/hedgehogs-docs">hedgehogs-docs</a> for the docs, or <a href="https://github.com/HedgeHogsApp/hedgehogs-contracts">hedgehogs-contracts</a> for the protocol.
+        </p>
+      ),
+    },
+  ]}
+/>

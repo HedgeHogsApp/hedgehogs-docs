@@ -42,7 +42,7 @@ export default async function DocPage({ params }: PageProps) {
         <Breadcrumb section={section} sectionTitle={getSectionTitle(section)} pageTitle={page.frontmatter.title} />
         <h1 className="mt-4 text-2xl font-semibold text-fg-primary">{page.frontmatter.title}</h1>
         {page.frontmatter.description && (
-          <p className="mt-2 max-w-[65ch] text-base text-fg-muted">{page.frontmatter.description}</p>
+          <p className="mt-2 max-w-[65ch] text-base text-fg-secondary">{page.frontmatter.description}</p>
         )}
         <div className="mt-6">
           <MDXRemote

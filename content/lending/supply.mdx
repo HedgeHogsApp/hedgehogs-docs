@@ -11,7 +11,15 @@ Supplying deposits a token into a lending market (Aave V3, Morpho, or Compound) 
 2. Tap the asset you want to supply. The drawer opens pre-filled with the market's live context: **Supply APY**, **Available liquidity**, and **LTV / Liquidation threshold** if it can be collateral.
 3. Enter the amount and confirm. The first time, the app asks you to **Deploy your HedgeHog account** on that chain and approve the token to it.
 
-The funds move wallet → your account → the protocol. Your account holds the aTokens.
+The funds move through your account, and your account holds the aTokens:
+
+<FlowStrip
+  steps={[
+    { icon: <Wallet className="h-3.5 w-3.5" />, label: 'Your wallet', detail: 'you approve once' },
+    { icon: <ShieldCheck className="h-3.5 w-3.5" />, label: 'HedgeHog account', detail: 'holds the aTokens' },
+    { icon: <DexIcon protocol="aave" size={16} />, label: 'Aave V3', detail: 'earns the supply APY' },
+  ]}
+/>
 
 ## From the dashboard
 
@@ -24,5 +32,3 @@ The supply form shows market facts that are actually measured: the supply APY yo
 <Callout tone="info" title="Collateral">
   Supplied assets are collateral by default where the market allows. You can switch **Use as collateral** per asset from the account panel, and **Change E-Mode** for efficient-borrowing modes.
 </Callout>
-
-Next: [Borrow](/docs/lending/borrow).

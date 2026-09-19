@@ -5,6 +5,14 @@ description: Enter a pool — with two tokens, or with one via Zap In.
 
 Adding liquidity puts capital into a concentrated-liquidity pool (Uniswap V3, PancakeSwap, Aerodrome Slipstream, Curve, Balancer) and earns trading fees while the price stays in your range — e.g. <CryptoIcon symbol="ETH" size={16} /> <CryptoIcon symbol="USDC" size={16} /> ETH / USDC.
 
+<FlowStrip
+  steps={[
+    { icon: <Wallet className="h-3.5 w-3.5" />, label: 'Your wallet', detail: 'you approve once' },
+    { icon: <ShieldCheck className="h-3.5 w-3.5" />, label: 'HedgeHog account', detail: 'owns the LP NFT' },
+    { icon: <DexIcon protocol="uniswap" size={16} />, label: 'Uniswap V3', detail: 'earns fees in range' },
+  ]}
+/>
+
 ## From Explore → Pools
 
 1. Open **Explore** → **Pools**. A market table of DEX pools shows TVL, APR, 24h volume.
@@ -21,5 +29,3 @@ A pool needs two tokens, but you can enter with one:
 <Callout tone="info" title="Your position badge">
   In the Pools table, a pool you already hold liquidity in shows a **Your position** badge and a **View your position →** link straight into the dashboard, so you are never guessing where your money is.
 </Callout>
-
-Next: [Manage your range](/docs/liquidity/manage-range).

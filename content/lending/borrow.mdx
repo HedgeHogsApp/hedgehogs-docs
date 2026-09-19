@@ -5,6 +5,14 @@ description: Borrow against your collateral, watch the projected health factor, 
 
 Borrowing takes a loan against the collateral you have supplied. The loan and the collateral are both held by your HedgeHog account.
 
+<FlowStrip
+  steps={[
+    { icon: <DexIcon protocol="aave" size={16} />, label: 'Aave V3', detail: 'your collateral is here' },
+    { icon: <ShieldCheck className="h-3.5 w-3.5" />, label: 'HedgeHog account', detail: 'holds the debt' },
+    { icon: <Wallet className="h-3.5 w-3.5" />, label: 'Your wallet', detail: 'receives the loan' },
+  ]}
+/>
+
 ## From Explore
 
 1. Open **Explore** → **Borrow**.
@@ -24,5 +32,3 @@ The nearer your health factor is to 1, the smaller your safety margin. Keep a bu
 <Callout tone="warning" title="Liquidation">
   If your health factor drops below 1, lenders can liquidate your collateral. The dashboard flags **Near liquidation** as an alert, and [Auto-repay](/docs/automations/auto-repay) exists precisely to keep you above it.
 </Callout>
-
-Next: [Repay](/docs/lending/repay).
