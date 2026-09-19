@@ -1,4 +1,16 @@
 {
   "title": "Protocols & markets",
-  "order": ["supported-chains", "aave-v3", "uniswap-v3", "curve-and-others", "contracts"]
+  "order": [
+    "supported-chains",
+    "aave-v3",
+    "uniswap-v3",
+    "morpho-blue",
+    "compound-v3",
+    "curve",
+    "yearn-v3",
+    "balancer-v2",
+    "aerodrome",
+    "pancakeswap-v3",
+    "contracts"
+  ]
 }

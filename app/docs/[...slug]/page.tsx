@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import { MDXRemote } from 'next-mdx-remote/rsc'
+import remarkGfm from 'remark-gfm'
 import { getPage, getHeadings, getPrevNext, getSectionTitle, getAllSlugs } from '@/lib/docs/nav'
 import { mdxComponents } from '@/components/docs-ui/mdxComponents'
 import { TocRail } from '@/components/docs-ui/TocRail'
@@ -44,7 +45,11 @@ export default async function DocPage({ params }: PageProps) {
           <p className="mt-2 max-w-[65ch] text-base text-fg-muted">{page.frontmatter.description}</p>
         )}
         <div className="mt-6">
-          <MDXRemote source={page.body} components={mdxComponents()} />
+          <MDXRemote
+            source={page.body}
+            components={mdxComponents()}
+            options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
+          />
         </div>
         <PrevNext prev={prev} next={next} />
         <Feedback />

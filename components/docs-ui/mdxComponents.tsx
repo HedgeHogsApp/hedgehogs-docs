@@ -10,6 +10,9 @@ import AutoRepayAnimation from '@/components/docs/AutoRepayAnimation'
 import AutoCollaterizeAnimation from '@/components/docs/AutoCollaterizeAnimation'
 import AutoHarvestAnimation from '@/components/docs/AutoHarvestAnimation'
 import AutoRebalanceAnimation from '@/components/docs/AutoRebalanceAnimation'
+import DexIcon from '@/components/DexIcon'
+import CryptoIcon from '@/components/CryptoIcon'
+import { ChainIcon } from '@/components/docs-ui/ChainIcon'
 
 function slugify(text: string): string {
   return text.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-')
@@ -123,5 +126,8 @@ export function mdxComponents() {
     AutoCollaterizeAnimation,
     AutoHarvestAnimation,
     AutoRebalanceAnimation,
+    DexIcon,
+    CryptoIcon,
+    ChainIcon,
   }
 }

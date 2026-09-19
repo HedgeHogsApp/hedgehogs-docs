@@ -3,18 +3,16 @@ title: Supported chains
 description: Where HedgeHogs runs today and what lives on each network.
 ---
 
-HedgeHogs deploys your account on the chains it supports, one per network. Today:
+HedgeHogs deploys your HedgeHog account on the chains it supports, one per network.
 
-| Chain | Status | Markets |
-|---|---|---|
-| **Base** | Live | Aave, Morpho, Compound, Uniswap V3, Curve, Balancer, Aerodrome (incl. Slipstream) |
-| **BNB Smart Chain** | Live | Aave, Curve, PancakeSwap V3 (incl. CAKE staking) |
-| **Ethereum Mainnet** | In preparation | Aave, Morpho, Compound, Uniswap V3, Curve, Yearn, Balancer |
+<ChainIcon chain="base" /> **Base** — live. Aave, Morpho, Compound, Uniswap V3, Curve, Balancer, Aerodrome (incl. Slipstream).
 
-Deployments are configured per chain and per protocol, so a market is only listed where it actually exists. The local development forks (31337 / 31338 / 31339) are tooling, never user chains.
+<ChainIcon chain="bsc" /> **BNB Smart Chain** — live. Aave, Curve, PancakeSwap V3 (incl. CAKE staking).
+
+<ChainIcon chain="eth" /> **Ethereum Mainnet** — in preparation. Aave, Morpho, Compound, Uniswap V3, Curve, Yearn, Balancer.
 
 <Callout tone="info" title="Your account is per chain">
   Deploying on Base does not deploy on BNB. The dashboard shows, per chain, whether you have an account ready.
 </Callout>
 
-Protocol → chain map: see [Contracts](/docs/protocols/contracts).
+A market is only listed where it actually exists — deployments are configured per chain and per protocol. The local development forks (31337 / 31338 / 31339) are tooling, never user chains. The full address map is on the [Contracts](/docs/protocols/contracts) page.

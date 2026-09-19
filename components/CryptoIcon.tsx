@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState, useEffect, useMemo, useCallback } from 'react'
 import Image from 'next/image'
 import { useReducedMotion } from 'motion/react'
