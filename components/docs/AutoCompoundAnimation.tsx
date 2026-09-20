@@ -1,223 +1,57 @@
 'use client'
-
-import React, { useLayoutEffect, useRef, useEffect, useState } from 'react'
-import { gsap } from 'gsap'
-import { MotionPathPlugin } from 'gsap/dist/MotionPathPlugin'
-
-if (typeof window !== 'undefined') {
-  gsap.registerPlugin(MotionPathPlugin)
-}
-
 /**
- * AutoCompoundAnimation
- * Shows the auto-compound strategy: fees → reinvest → grow
+ * AutoCompoundAnimation — fees → reinvest → growth, looping.
+ * Static: the LP node (grown) + orbit + caption. Animated: a fee coin orbits
+ * the LP and the LP pulses larger. Reduced motion → the grown, complete frame.
  */
+import { motion, useTransform } from 'motion/react'
+import { DiagramShell } from '@/components/docs-ui/DiagramShell'
+import { useDiagramLoop } from '@/lib/diagram/useDiagramLoop'
+import { Chip, Node, RailToken, railPath, type Pt, type Rail } from './autoFlow'
 
-const AutoCompoundAnimation: React.FC = () => {
-  const svgRef = useRef<SVGSVGElement | null>(null)
-  const [mounted, setMounted] = useState(false)
+const LP: Pt = { x: 0.5, y: 0.42 }
+const ORBIT: Rail = [
+  LP,
+  { x: 0.76, y: 0.16 },
+  { x: 0.86, y: 0.5 },
+  { x: 0.76, y: 0.84 },
+]
 
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
-  const lpNode = useRef<SVGGElement | null>(null)
-  const lpCircle = useRef<SVGCircleElement | null>(null)
-  const feeToken = useRef<SVGImageElement | null>(null)
-  const returnPath = useRef<SVGPathElement | null>(null)
-
-  useLayoutEffect(() => {
-    if (!svgRef.current || !mounted) return
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-
-    const tl = gsap.timeline({
-      repeat: -1,
-      defaults: { ease: 'power2.inOut' },
-    })
-
-    // Phase 1: LP generates yield/fees (0-0.8s)
-    // Pulse the LP to show it's generating yield
-    tl.to(
-      lpNode.current,
-      { scale: 1.08, duration: 0.6, ease: 'power2.out' },
-      0
-    )
-
-    // Fee emerges from the LP itself (showing yield generation)
-    if (feeToken.current && returnPath.current) {
-      // Start hidden
-      tl.set(feeToken.current, { opacity: 0 }, 0)
-
-      // Show fee emerging from LP
-      tl.to(
-        feeToken.current,
-        {
-          opacity: 1,
-          duration: 0.3,
-        },
-        0.6
-      )
-
-      // Phase 2: Fee loops around LP (0.9-3.5s)
-
-      // Animate along the circular path
-      tl.to(
-        feeToken.current,
-        {
-          duration: 2.6,
-          motionPath: {
-            path: returnPath.current,
-            align: returnPath.current,
-            alignOrigin: [0.5, 0.5],
-          },
-          ease: 'none',
-        },
-        0.9
-      )
-
-      // Fade out as it merges back with LP
-      tl.to(
-        feeToken.current,
-        { opacity: 0, duration: 0.3 },
-        3.2
-      )
-    }
-
-    // Phase 3: LP grows (3.5-5.2s)
-    if (lpCircle.current) {
-      tl.to(
-        lpCircle.current,
-        {
-          attr: { r: 50 },
-          duration: 1.0,
-          ease: 'power2.out',
-        },
-        3.5
-      )
-
-      // Hold the growth
-      tl.to({}, { duration: 0.7 }, 4.5)
-
-      // Reset size
-      tl.to(
-        lpCircle.current,
-        {
-          attr: { r: 40 },
-          duration: 0.3,
-        },
-        5.2
-      )
-    }
-
-    // Reset LP scale
-    tl.to(lpNode.current, { scale: 1, duration: 0.3 }, 5.2)
-    tl.to({}, { duration: 0.3 }, 5.5)
-
-    return () => {
-      tl.kill()
-    }
-  }, [mounted])
-
-  if (!mounted) {
-    return (
-      <div className="w-full h-[300px] flex justify-center items-center bg-surface-panel dark:bg-surface-page rounded-lg">
-        <div className="text-fg-secondary dark:text-fg-muted text-sm">
-          Loading...
-        </div>
-      </div>
-    )
-  }
+export default function AutoCompoundAnimation() {
+  const { scope, t, reduce } = useDiagramLoop({ period: 5000 })
+  const lpPulse = useTransform(t, [0, 0.5, 1], reduce ? [1, 1, 1] : [1, 1.1, 1])
+  const draw = useTransform(t, [0.06, 0.7], [0, 1], { clamp: true })
 
   return (
-    <div className="w-full flex justify-center items-center rounded-lg bg-surface-panel dark:bg-surface-page overflow-hidden" data-motion="on">
-      <svg
-        ref={svgRef}
-        viewBox="0 0 400 300"
-        className="w-full h-auto"
-        preserveAspectRatio="xMidYMid meet"
-      >
-        {/* LP Position Center */}
-        <g ref={lpNode} transform="translate(200, 150)">
-          <circle
-            ref={lpCircle}
-            r={40}
-            style={{
-              fill: 'var(--anim-card)',
-              stroke: '#FF6B6B',
-              strokeWidth: 2,
-            }}
-          />
-          <text
-            y={-8}
-            fontSize={14}
-            fontWeight={700}
-            style={{ fill: 'var(--anim-ink)' }}
-            textAnchor="middle"
-            fontFamily="liebling, ui-sans-serif, system-ui"
-          >
-            LP
-          </text>
-          <text
-            y={8}
-            fontSize={11}
-            fontWeight={600}
-            style={{ fill: 'var(--anim-ink)', opacity: 0.7 }}
-            textAnchor="middle"
-            fontFamily="liebling, ui-sans-serif, system-ui"
-          >
-            Position
-          </text>
-        </g>
-
-        {/* Fee token looping around LP */}
-        <image
-          ref={feeToken}
-          href="/icons/usdc.svg"
-          x={200 - 12}
-          y={90 - 12}
-          width={24}
-          height={24}
-          opacity={0}
-        />
-
-        {/* Circular path around LP (invisible guide for motion) */}
-        <path
-          ref={returnPath}
-          d="M 200,90
-             A 60,60 0 0,1 260,150
-             A 60,60 0 0,1 200,210
-             A 60,60 0 0,1 140,150
-             A 60,60 0 0,1 200,90 Z"
+    <DiagramShell label="Auto-compound" ref={scope}>
+      <svg viewBox="0 0 100 60" preserveAspectRatio="none" className="absolute inset-0 h-full w-full" aria-hidden>
+        <path d={railPath(ORBIT)} fill="none" stroke="rgb(var(--line))" strokeWidth={0.5} strokeDasharray="3 3" />
+        <motion.path
+          d={railPath(ORBIT)}
           fill="none"
-          stroke="none"
+          stroke="rgb(var(--brand))"
+          strokeOpacity={0.5}
+          strokeWidth={0.7}
+          strokeLinecap="round"
+          style={{ pathLength: draw }}
         />
-
-        {/* Label */}
-        <text
-          x={200}
-          y={270}
-          fontSize={16}
-          fontWeight={700}
-          style={{ fill: '#FF6B6B' }}
-          textAnchor="middle"
-          fontFamily="liebling, ui-sans-serif, system-ui"
-        >
-          Auto Compound
-        </text>
-        <text
-          x={200}
-          y={288}
-          fontSize={11}
-          fontWeight={600}
-          style={{ fill: 'var(--anim-ink)', opacity: 0.6 }}
-          textAnchor="middle"
-          fontFamily="liebling, ui-sans-serif, system-ui"
-        >
-          Reinvest fees for exponential growth
-        </text>
       </svg>
-    </div>
+
+      <RailToken rail={ORBIT} t={t} window={[0.1, 0.8]} symbol="USDC" />
+
+      <motion.div style={{ scale: lpPulse }}>
+        <Node x={LP.x} y={LP.y} width={150}>
+          <div className="flex flex-col items-center gap-1 rounded-2xl border border-brand/40 bg-surface-panel px-4 py-3 shadow-panel-elevated ring-1 ring-brand/20">
+            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-surface-card text-[12px] font-bold text-fg-primary">
+              LP
+            </span>
+            <p className="text-[11px] font-semibold text-fg-primary">Position</p>
+            <p className="text-[10px] text-success">reinvesting fees</p>
+          </div>
+        </Node>
+      </motion.div>
+
+      <Chip x={0.5} y={0.88}>Reinvest fees for exponential growth</Chip>
+    </DiagramShell>
   )
 }
-
-export default AutoCompoundAnimation

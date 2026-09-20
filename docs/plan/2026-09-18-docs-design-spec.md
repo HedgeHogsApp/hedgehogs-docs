@@ -202,21 +202,28 @@ TOC, prose, code) is Uniswap-shaped but wears our tokens.
   explain a process — they are content, not decoration:
   `how-it-works/automation` → `StrategyFlowAnimation`; each `automations/*`
   page → its `Auto*` animation; `how-it-works/architecture` →
-  `ArchitectureDiagram` (new, non-custodial, `RoutingScene` pattern);
-  `how-it-works/approvals` → `ApprovalsDiagram` (new, JIT, same pattern).
-- **Homepage hero** carries the dither WebGL backdrop (`Dither.jsx`, marketing
-  mounting pattern): `opacity-[0.28] mix-blend-screen`, bottom fade mask,
-  `dpr={1}`, `disableAnimation` under reduced motion. Uniswap-docs-style
-  ambient background in our dither. Inner docs pages stay calm (no backdrop).
+  `ArchitectureDiagram` (non-custodial); `how-it-works/approvals` →
+  `ApprovalsDiagram` (JIT).
+- **Homepage hero** carries `DitherHero` — a **pure SVG/CSS dither** (brand
+  glow + dot-grid + looping wave), no WebGL/three. `opacity-[0.28]
+  mix-blend-screen`, bottom fade mask, wave static under reduced motion.
+  Inner docs pages stay calm (no backdrop).
 
-### 9.2 Animation policy for the ported process animations
-- Ported `components/docs/*` components are **adapted**, not copied blind:
-  add a `prefers-reduced-motion` guard (`gsap.globalTimeline.pause()` + a
-  settled final frame) and `data-motion` markers. They currently loop forever.
-- `RoutingScene` gets a settled-mode wrapper (constant progress `1`) for the
-  reduced-motion state, then is the base pattern for the two new diagrams.
-- All motion from `lib/motion/tokens.ts`; the chrome stays calm (no per-nav
-  stagger — motion inventory §6).
+### 9.2 Animation engine (2026-09-19 rework — motion/react only)
+- **One stack, no gsap, no three.** Every diagram is built on
+  `lib/diagram/useDiagramLoop` (autoplay + loop; `t ∈ [0,1)` driven on an
+  animation frame) inside a `DiagramShell`.
+- **Static frame first:** the diagram's structure (nodes, labels, tracks,
+  captions) is static JSX — always complete. Only the *transient/result* layer
+  (token positions, bar fills, band placement) derives from `t` via
+  `useTransform(t, window, value, { clamp: true })`, windows ending before
+  `t ≈ 0.95` so the 1→0 wrap is invisible.
+- **Reduced motion = the complete final frame** (t stays 1): the result state
+  is shown (e.g. repaid debt bar, re-centered band), transient tokens hidden.
+  No element of the static content is ever at `opacity: 0`.
+- `verify-diagrams.cjs` asserts, per diagram: content renders, the animated
+  layer loops, no page errors, and the reduced-motion frame is complete.
+- The chrome stays calm (no per-nav stagger — motion inventory §6).
 
 ### 9.3 Fonts
 - Inter via `next/font` only. The animations' `<text fontFamily>` keeps its

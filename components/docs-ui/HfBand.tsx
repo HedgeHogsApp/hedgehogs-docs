@@ -1,54 +1,23 @@
 'use client'
 
-import { motion, useInView, useReducedMotion } from 'motion/react'
-import { useRef } from 'react'
-import { DURATION_S, EASE_OUT_QUART } from '@/lib/motion/tokens'
-
 /**
- * HfBand — the health-factor scale as a horizontal band.
+ * HfBand — the health-factor scale as a static band.
  * Danger < 1.0 · Caution 1.0–1.5 · Safe > 1.5. Status colours only (a health
- * factor is status). Reduced motion renders the settled frame.
+ * factor is status). Always renders the complete frame — no animation.
  */
 export function HfBand() {
-  const ref = useRef<HTMLDivElement>(null)
-  const inView = useInView(ref, { once: true, amount: 0.4 })
-  const reduce = useReducedMotion()
-
   return (
-    <div ref={ref} className="my-6 rounded-lg border border-line bg-surface-panel p-4">
+    <div className="my-6 rounded-lg border border-line bg-surface-panel p-4">
       <div className="mb-2 flex items-center justify-between text-3xs uppercase tracking-wider text-fg-muted">
         <span>Health factor</span>
         <span className="normal-case tracking-normal">liquidation &lt; 1.0</span>
       </div>
       <div className="relative h-3 overflow-hidden rounded-full">
-        <motion.div
-          className="absolute inset-0 flex"
-          initial={false}
-          animate={{ opacity: inView && !reduce ? 1 : 1 }}
-        >
-          <motion.div
-            className="h-full bg-danger/70"
-            style={{ width: '25%' }}
-            initial={{ scaleX: 0, transformOrigin: 'left' }}
-            animate={inView && !reduce ? { scaleX: 1 } : { scaleX: 1 }}
-            transition={{ duration: DURATION_S.slow, ease: EASE_OUT_QUART }}
-          />
-          <motion.div
-            className="h-full bg-warning/70"
-            style={{ width: '12.5%' }}
-            initial={{ scaleX: 0, transformOrigin: 'left' }}
-            animate={inView && !reduce ? { scaleX: 1 } : { scaleX: 1 }}
-            transition={{ duration: DURATION_S.slow, ease: EASE_OUT_QUART, delay: 0.12 }}
-          />
-          <motion.div
-            className="h-full bg-success/70"
-            style={{ width: '62.5%' }}
-            initial={{ scaleX: 0, transformOrigin: 'left' }}
-            animate={inView && !reduce ? { scaleX: 1 } : { scaleX: 1 }}
-            transition={{ duration: DURATION_S.slow, ease: EASE_OUT_QUART, delay: 0.24 }}
-          />
-        </motion.div>
-        {/* the 1.0 and 1.5 ticks */}
+        <div className="flex h-full">
+          <div className="h-full bg-danger/70" style={{ width: '25%' }} />
+          <div className="h-full bg-warning/70" style={{ width: '12.5%' }} />
+          <div className="h-full bg-success/70" style={{ width: '62.5%' }} />
+        </div>
         <div className="absolute inset-y-0 left-[25%] w-px bg-surface-page" />
         <div className="absolute inset-y-0 left-[37.5%] w-px bg-surface-page" />
       </div>

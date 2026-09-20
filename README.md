@@ -8,9 +8,10 @@ shared HedgeHogs design tokens.
 
 - Next 16 (app router) + TypeScript + Tailwind v4
 - MDX via `next-mdx-remote/rsc`, content in `content/` with `meta.json` per section
-- `motion` for the shell, `gsap` for the ported process animations
-- three / R3F for the dither hero background
-- pagefind-free search: a build-time JSON index served at `/search-index.json`
+- `motion/react` everywhere (no gsap, no three) — diagrams run on
+  `lib/diagram/useDiagramLoop` (autoplay + loop, reduced-motion → complete frame)
+- Dither hero is pure SVG/CSS (`DitherHero`)
+- Search: a build-time JSON index served at `/search-index.json`
 - `/llms.txt` for agent-readable navigation
 
 ## Getting started
