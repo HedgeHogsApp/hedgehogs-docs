@@ -1,9 +1,9 @@
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import { MDXRemote } from 'next-mdx-remote/rsc'
-import remarkGfm from 'remark-gfm'
 import { getPage, getHeadings, getPrevNext, getSectionTitle, getAllSlugs } from '@/lib/docs/nav'
 import { mdxComponents } from '@/components/docs-ui/mdxComponents'
+import { mdxOptions } from '@/lib/docs/mdx'
 import { TocRail } from '@/components/docs-ui/TocRail'
 import { Breadcrumb } from '@/components/docs-ui/Breadcrumb'
 import { PrevNext } from '@/components/docs-ui/PrevNext'
@@ -48,7 +48,7 @@ export default async function DocPage({ params }: PageProps) {
           <MDXRemote
             source={page.body}
             components={mdxComponents()}
-            options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
+            options={mdxOptions}
           />
         </div>
         <PrevNext prev={prev} next={next} />
