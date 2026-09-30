@@ -41,7 +41,7 @@ homepage hero in the style of Uniswap's docs background.
 |---|---|
 | `public/dexes/` (18 files), `public/chains/` (7), `public/icons/` (subset the docs actually references: eth, usdc, wbtc, knc, aave…) | Protocol/chain/token marks. |
 | `public/icons/generic-token.svg` | `CryptoIcon` terminal fallback. |
-| `public/favicon.svg` | favicon. |
+| `public/favicon.svg` | favicon — now `app/icon.svg` (+ `favicon.ico`, `apple-icon.png`), colours inverted for docs. |
 | `public/wallets/` (metamask, rabby), `public/lendingprotocols/` (aave), `public/dexes/uniswap.svg` | StrategyFlowAnimation assets. |
 
 ### Process animations (the owner's favourite)
